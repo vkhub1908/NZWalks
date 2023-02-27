@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using static Azure.Core.HttpHeader;
-using System.Threading.Channels;
 
 namespace NZWalks.API.Profiles
 {
-    public class RegionsProfile:Profile
+    public class WalksProfile:Profile
     {
         // why we use DTO
 
@@ -13,11 +11,12 @@ namespace NZWalks.API.Profiles
         //you may want to change the structure of your domain objects without affecting
         //the presentation layer. With DTOs, you can make these changes without affecting
         //the presentation layer, as long as the DTO structure remains the same.
-        public RegionsProfile()
+        public WalksProfile()
         {
-            CreateMap<Models.Domain.Region, Models.DTO.Region>()
-            .ReverseMap();
             //.ForMember(dest => dest.Id,options => options.MapFrom(src => src.Id));   
+            CreateMap<Models.Domain.Walk, Models.DTO.Walk>().ReverseMap();
+
+            CreateMap<Models.Domain.WalkDifficulty, Models.DTO.WalkDifficulty>().ReverseMap();
         }
     }
 }
